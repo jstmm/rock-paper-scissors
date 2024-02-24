@@ -2,6 +2,12 @@
 
 This is a console version of Rock Paper Scissors written in C.
 
+# Features
+
+- Multiple game modes:
+  - Infinite rounds - to play indefinitely
+  - Ten rounds - a game limited to ten rounds
+
 ## Installation
 
 1. Install the [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
@@ -20,15 +26,17 @@ Initial output:
 Welcome to the Rock Paper Scissor Game!
 =======================================
 
-Type (1) for Rock, (2) for Papper, (3) for Scissor, (0) to quit
-Your choice:  
+Choose a game mode:
+(1) Infinite rounds
+(2) Ten rounds
+>  
 ```
 
 When user wins:
 
 ```bash
-Type (1) for Rock, (2) for Papper, (3) for Scissor, (0) to quit
-Your choice: 1
+Type (1) for Rock, (2) for Papper, (3) for Scissor, (0) to quit the game
+> 1
 The computer's choice: 3
 
 --> You win the round
@@ -41,11 +49,11 @@ The computer's choice: 3
 When user loses:
 
 ```bash
-Type (1) for Rock, (2) for Papper, (3) for Scissor, (0) to quit
-Your choice: 1
+Type (1) for Rock, (2) for Papper, (3) for Scissor, (0) to quit the game
+> 1
 The computer's choice: 2
 
---> Computer wins the round
+--> The computer wins the round
 
 ---------------------------------------
     You : 0     Computer : 1
@@ -55,20 +63,29 @@ The computer's choice: 2
 When there is a tie:
 
 ```bash
-Type (1) for Rock, (2) for Papper, (3) for Scissor, (0) to quit
-Your choice: 1
+Type (1) for Rock, (2) for Papper, (3) for Scissor, (0) to quit the game
+> 1
 The computer's choice: 1
 
---> No one wins
+--> No one wins the round
 
 ---------------------------------------
     You : 0     Computer : 0
 ---------------------------------------
 ```
 
-## What can be improved
+Final result:
 
-- Limit the number of rounds
+```bash
+---------------------------------------
+    You : 2     Computer : 1
+---------------------------------------
+
+You win the game!!!
+```
+
+## Roadmap
+
 - Keep a score table in external file
 - Add tests
 - Make the game full screen
