@@ -22,11 +22,14 @@ int main(int argc, char const *argv[]) {
 
     srand(time(0));
 
+    int user_score = 0;
+    int computer_score = 0;
+
     do {
         enum Action user_choice = -1;
         bool quit_game = false;
 
-        printf("\nType (1) for Rock, (2) for Papper, (3) for Scissor, (0) to quit\n");
+        printf("\nType (1) for Rock, (2) for Paper, (3) for Scissor, (0) to quit\n");
 
         do {
             int int_user_choice = -1;
@@ -54,11 +57,16 @@ int main(int argc, char const *argv[]) {
         if (user_choice == computer_choice) {
             printf("No one wins");
         } else if (user_wins(user_choice, computer_choice)) {
+            user_score++;
             printf("You won");
         } else {
+            computer_score++;
             printf("You've lost");
         }
+
         printf("\n\n---------------------------------------\n");
+        printf("    You : %d     Computer : %d\n", user_score, computer_score);
+        printf("---------------------------------------\n");
     } while (true);
 
     printf("\nBye!\n\n");
