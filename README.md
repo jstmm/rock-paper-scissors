@@ -4,10 +4,12 @@ This is a console version of Rock Paper Scissors written in C.
 
 ## Installation
 
-This game was developed on a Linux machine using VSCode and GCC 11. It can only be build through the VSCode task currently. The command used is:
+1. Install the [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
+2. Build the variant needed (Debug or Release)
+3. Run the program from the CMake extension or by executing the following command from the project folder:
 
 ```bash
-gcc main.c -o main
+$ build/rock-paper-scissors
 ```
 
 ## Usage
@@ -54,7 +56,8 @@ The computer's choice: 1
 
 ## What can be improved
 
-- Moving the VSCode task to a Makefile using something like CMake so it can be build on multiple environments
 - Remember the score between each rounds
 - Limit the number of rounds
 - Keep a score table in external file
+- Add tests
+- Make the game full screen
