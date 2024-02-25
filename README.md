@@ -2,7 +2,7 @@
 
 This is a console version of Rock Paper Scissors written in C.
 
-# Features
+## Features
 
 - Multiple game modes:
   - Infinite rounds - to play indefinitely
@@ -10,11 +10,15 @@ This is a console version of Rock Paper Scissors written in C.
 
 ## Installation
 
-1. Install the [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
-2. Build the variant needed (Debug or Release)
-3. Run the program from the CMake extension or by executing the following command from the project folder:
+CMake needs to be installed
+
+From the project root folder:
 
 ```bash
+# Build
+$ cmake -S . -B build; cmake --build build
+
+# Start
 $ build/rock-paper-scissors
 ```
 
@@ -29,6 +33,7 @@ Welcome to the Rock Paper Scissor Game!
 Choose a game mode:
 (1) Infinite rounds
 (2) Ten rounds
+(0) Quit
 >  
 ```
 

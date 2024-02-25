@@ -67,10 +67,14 @@ int main(int argc, char const *argv[]) {
     printf("Choose a game type:\n");
     printf("(1) Infinite rounds\n"); 
     printf("(2) Ten rounds\n");
+    printf("(0) Quit\n");
     printf("> ");
     scanf("%d", &game_type);
 
     do {
+        if (game_type == 0) {
+            break;
+        }
         enum Action user_choice = UndefinedAction;
 
         printf("\nType (1) for Rock, (2) for Paper, (3) for Scissor, (0) to quit the game\n");
