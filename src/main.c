@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include <stdbool.h>
 
@@ -13,9 +14,13 @@ enum Action {
 
 enum GameType {
     UndefinedGameType = -1,
+    QuitGame          = 0,
     InfiniteRounds    = 1,
-    TenRounds         = 2
+    TenRounds         = 2,
+    ScoreTable        = 3
 };
+
+const char score_file_path[] = "../resources/scores.txt";
 
 bool b_user_wins(enum Action user_choice, enum Action computer_choice) {
     return
@@ -38,9 +43,9 @@ void print_result_for_the_round(int user_choice, int computer_choice, int *user_
         printf("Computer wins the round");
     }
 
-    printf("\n\n---------------------------------------\n");
+    printf("\n\n--------------------------------------------------------------------------------\n");
     printf("    You : %d     Computer : %d\n", *user_score, *computer_score);
-    printf("---------------------------------------\n");
+    printf("================================================================================\n");
 }
 
 void print_final_result(int user_score, int computer_score) {
@@ -51,32 +56,58 @@ void print_final_result(int user_score, int computer_score) {
     } else {
         printf("\nNo one wins the game\n");
     }
+    printf("================================================================================\n");
 }
 
-int main(int argc, char const *argv[]) {
-    srand(time(0));
+void save_result_to_file(int user_score, int computer_score) {
+    FILE *file = fopen(score_file_path, "a+"); 
+    char buffer[10];
+    sprintf(buffer, "%d,%d\n", user_score, computer_score);
+    fputs(buffer, file);
+    fclose(file);
+}
 
-    int user_score = 0;
-    int computer_score = 0;
-    int game_type = UndefinedGameType;
-    int round_left = 10;
-
-    printf("Welcome to the Rock Paper Scissor Game!\n");
-    printf("=======================================\n\n");
- 
-    printf("Choose a game type:\n");
-    printf("(1) Infinite rounds\n"); 
-    printf("(2) Ten rounds\n");
-    printf("(0) Quit\n");
-    printf("> ");
-    scanf("%d", &game_type);
+void start_infinite_round_game() {
+    int round = 0;
 
     do {
-        if (game_type == 0) {
-            break;
-        }
+        int user_score = 0;
+        int computer_score = 0;
         enum Action user_choice = UndefinedAction;
 
+        printf("Round %d\n\n", ++round);
+        printf("\nType (1) for Rock, (2) for Paper, (3) for Scissor, (0) to quit the game\n");
+
+        do {
+            printf("> ");
+            scanf("%d", &user_choice);
+
+            if (user_choice < UndefinedAction | Scissor < user_choice) {
+                printf("Invalid input, try again\n");
+                user_choice = UndefinedAction;
+            }
+        } while (user_choice == UndefinedAction);
+
+        if (user_choice == Quit) {
+            break;
+        }
+
+        enum Action computer_choice = (rand() % 3) + 1;
+
+        print_result_for_the_round(user_choice, computer_choice, &user_score, &computer_score);
+    } while(true);
+}
+
+void start_ten_rounds_game() {
+    int round = 0;
+    int user_score = 0;
+    int computer_score = 0;
+    int round_left = 10;
+
+    do {
+        enum Action user_choice = UndefinedAction;
+
+        printf("Round %d\n\n", ++round);
         printf("\nType (1) for Rock, (2) for Paper, (3) for Scissor, (0) to quit the game\n");
 
         do {
@@ -97,15 +128,67 @@ int main(int argc, char const *argv[]) {
 
         print_result_for_the_round(user_choice, computer_choice, &user_score, &computer_score);
 
-        if (game_type == TenRounds) {
-            round_left--;
-        }
+        round_left--;
         if (round_left == 0) {
             print_final_result(user_score, computer_score);
+            save_result_to_file(user_score, computer_score);
             break;
         }
 
     } while (true);
+}
+
+void print_score_table() {
+    FILE *file = fopen(score_file_path, "r+");
+    if (!file) {
+        printf("(no records)");
+        return;
+    }
+    printf("\n====== Scores ======\n");
+    char line_buffer[10];
+    while (fgets(line_buffer, sizeof(line_buffer), file) != NULL)
+    {
+        printf("%s", line_buffer);
+    }
+    fclose(file);
+    printf("================================================================================\n");
+}
+
+int main(int argc, char const *argv[]) {
+    int user_score = 0;
+    int computer_score = 0;
+    int menu_selection = UndefinedGameType;
+    int round_left = 10;
+
+    srand(time(0));
+
+    printf("\n\nWelcome to the Rock Paper Scissor Game!\n");
+    printf("=======================================\n\n");
+ 
+    printf("(1) Infinite rounds\n"); 
+    printf("(2) Ten rounds\n");
+    printf("(3) Score Table\n");
+    printf("(0) Quit\n");
+    printf("> ");
+    scanf("%d", &menu_selection);
+    printf("================================================================================\n");
+
+    switch (menu_selection)
+    {
+    case UndefinedGameType:
+        break;
+    case InfiniteRounds:
+        start_infinite_round_game();
+        break;
+    case TenRounds:
+        start_ten_rounds_game();
+        break;
+    case ScoreTable:
+        print_score_table();
+        break;
+    default:
+        break;
+    }
 
     printf("\nBye!\n\n");
 

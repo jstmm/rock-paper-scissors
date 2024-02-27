@@ -16,10 +16,12 @@ From the project root folder:
 
 ```bash
 # Build
-$ cmake -S . -B build; cmake --build build
+$ cmake -S . -B build
+$ cmake --build build
 
 # Start
-$ build/rock-paper-scissors
+$ cd build
+$ ./rock-paper-scissors
 ```
 
 ## Usage
@@ -91,6 +93,6 @@ You win the game!!!
 
 ## Roadmap
 
-- Keep a score table in external file
 - Add tests
 - Make the game full screen
+- Update README
