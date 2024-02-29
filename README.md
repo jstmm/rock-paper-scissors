@@ -15,14 +15,17 @@ CMake needs to be installed
 From the project root folder:
 
 ```bash
-# Build
+# Configure
 $ cmake -S . -B build
+
+# Build
 $ cmake --build build
 
 # Start
-$ cd build
-$ ./rock-paper-scissors
+$ build/rock-paper-scissors
 ```
+
+Or use the extension CMake Tools on VSCode
 
 ## Usage
 
