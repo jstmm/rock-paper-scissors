@@ -4,6 +4,8 @@
 #include <time.h>
 #include <stdbool.h>
 
+#include "game.h"
+
 enum Action {
     UndefinedAction = -1,
     Quit            = 0,
@@ -155,6 +157,8 @@ void print_score_table() {
 }
 
 int main(int argc, char const *argv[]) {
+    printf("Test : %d", addition(1, 1));
+
     int user_score = 0;
     int computer_score = 0;
     int menu_selection = UndefinedGameType;

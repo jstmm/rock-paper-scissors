@@ -15,14 +15,11 @@ CMake needs to be installed
 From the project root folder:
 
 ```bash
-# Configure
-$ cmake -S . -B build
+# Build and Start
+$ ./start.sh
 
-# Build
-$ cmake --build build
-
-# Start
-$ build/rock-paper-scissors
+# Run tests
+$ ./test.sh
 ```
 
 Or use the extension CMake Tools on VSCode
@@ -93,9 +90,3 @@ Final result:
 
 You win the game!!!
 ```
-
-## Roadmap
-
-- Add tests
-- Make the game full screen
-- Update README

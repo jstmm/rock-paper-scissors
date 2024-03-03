@@ -1,15 +1,17 @@
 cmake_minimum_required(VERSION 3.0.0)
+
+set(PROJECT_NAME "rock-paper-scissors")
+
 project(
-  rock-paper-scissors
+  ${PROJECT_NAME}
   VERSION 1.0
   LANGUAGES C
 )
 
-# include(CTest)
-# enable_testing()
+add_executable(${CMAKE_PROJECT_NAME} main.c)
 
-add_executable(rock-paper-scissors src/main.c)
+add_library(Game game.c)
 
-# set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-# set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-# include(CPack)
+target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC Game)
+
+target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
