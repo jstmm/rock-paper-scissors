@@ -1,8 +1,7 @@
 ## Testing
-1. Being able to call development code (game.c for now) from Criterion test
-2. Run Criterion test from CTest (if this is possible)
-3. Move game code outside main function and into separate file
-4. Write tests
+1. Run Criterion test from CTest (if this is possible)
+2. Move game code outside main function and into separate file
+3. Write tests
 
 ## Misc.
 - Divide app into layers (input system, game logic, display)

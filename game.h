@@ -1,6 +1,13 @@
 #ifndef GAME_H
 #define GAME_H
 
-int addition(int, int);
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <stdbool.h>
 
-#endif /* EXAMPLE_H */
+#include "game_actions.h"
+
+void rock_paper_scissors_game(void);
+
+#endif /* GAME_H */

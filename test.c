@@ -2,18 +2,16 @@
 
 #include "game.h"
 
-Test(simple_1, test) {
-    cr_assert(2 + 3 == 5, "Incorrect");
+Test(user_wins, test) {
+    enum Action user_choice = Rock;
+    enum Action computer_choice = Scissor;
+    bool result = b_user_wins(user_choice, computer_choice);
+    cr_assert(result == true, "Incorrect");
 }
 
-Test(simple_2, test) {
-    cr_assert(2 + 3 == 5, "Incorrect");
-}
-
-Test(simple_3, test) {
-    cr_assert(2 + 3 == 5, "Incorrect");
-}
-
-Test(simple_addition, test) {
-    cr_assert(addition(2, 3) == 5, "Incorrect");
+Test(user_loses, test) {
+    enum Action user_choice = Rock;
+    enum Action computer_choice = Paper;
+    bool result = b_user_wins(user_choice, computer_choice);
+    cr_assert(result == false, "Incorrect");
 }
