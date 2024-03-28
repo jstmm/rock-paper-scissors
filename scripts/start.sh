@@ -5,4 +5,4 @@ cmake -S . -B build
 cmake --build build
 
 echo "(( Starting game ))"
-build/rock-paper-scissors
+build/RockPaperScissors

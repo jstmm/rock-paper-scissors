@@ -1,9 +1,0 @@
-## Testing
-1. Run Criterion test from CTest (if this is possible)
-2. Move game code outside main function and into separate file
-3. Write tests
-
-## Misc.
-- Divide app into layers (input system, game logic, display)
-- Make the game full screen
-- Add multi-language support

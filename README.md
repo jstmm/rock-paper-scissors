@@ -16,15 +16,32 @@ From the project root folder:
 
 ```bash
 # Build and Start
-$ ./start.sh
+$ scripts/start.sh
 
 # Run tests
-$ ./test.sh
+$ scripts/test.sh
 ```
 
 Or use the extension CMake Tools on VSCode
 
+## To Do
+- [X] Set up CMake
+- Test
+  - [X] Install Catch2
+  - [ ] Make the tests executable from CTest
+  - [ ] Write tests
+- Refactoring
+  - [ ] Refactor the game into classes
+  - [ ] Divide app into layers (input system, game logic, display)
+- Features
+  - [ ] Make the game full screen
+  - [ ] Add multi-language support
+- Bugs
+  - [ ] Scores not being persisted anymore
+
 ## Usage
+
+(!! Doc out-of-date !!)
 
 Initial output:
 

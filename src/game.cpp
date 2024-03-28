@@ -1,14 +1,11 @@
 #include "game.h"
 
-enum GameType {
-    UndefinedGameType = -1,
-    QuitGame          = 0,
-    InfiniteRounds    = 1,
-    TenRounds         = 2,
-    ScoreTable        = 3
-};
-
-const char score_file_path[] = "../resources/scores.txt";
+bool b_user_wins(enum Action user_choice, enum Action computer_choice) {
+    return
+        ( user_choice == Rock    && computer_choice == Scissor ) |
+        ( user_choice == Paper   && computer_choice == Rock    ) |
+        ( user_choice == Scissor && computer_choice == Paper   );
+}
 
 void print_result_for_the_round(int user_choice, int computer_choice, int *user_score, int *computer_score) {
     printf("The computer's choice: %d", computer_choice);
@@ -16,7 +13,7 @@ void print_result_for_the_round(int user_choice, int computer_choice, int *user_
 
     if (user_choice == computer_choice) {
         printf("No one wins the round");
-    } else if (b_user_wins(user_choice, computer_choice)) {
+    } else if (b_user_wins((Action) user_choice, (Action) computer_choice)) {
         *user_score = (*user_score) + 1;
         printf("You win the round");
     } else {
@@ -60,8 +57,10 @@ void start_infinite_round_game() {
         printf("\nType (1) for Rock, (2) for Paper, (3) for Scissor, (0) to quit the game\n");
 
         do {
+            int input = 0;
             printf("> ");
-            scanf("%d", &user_choice);
+            scanf("%d", &input);
+            user_choice = static_cast<Action>(input);
 
             if (user_choice < UndefinedAction | Scissor < user_choice) {
                 printf("Invalid input, try again\n");
@@ -73,7 +72,7 @@ void start_infinite_round_game() {
             break;
         }
 
-        enum Action computer_choice = (rand() % 3) + 1;
+        enum Action computer_choice = (Action) ((rand() % 3) + 1);
 
         print_result_for_the_round(user_choice, computer_choice, &user_score, &computer_score);
     } while(true);
@@ -92,8 +91,10 @@ void start_ten_rounds_game() {
         printf("\nType (1) for Rock, (2) for Paper, (3) for Scissor, (0) to quit the game\n");
 
         do {
+            int input = 0;
             printf("> ");
-            scanf("%d", &user_choice);
+            scanf("%d", &input);
+            user_choice = static_cast<Action>(input);
 
             if (user_choice < UndefinedAction | Scissor < user_choice) {
                 printf("Invalid input, try again\n");
@@ -105,7 +106,7 @@ void start_ten_rounds_game() {
             break;
         }
 
-        enum Action computer_choice = (rand() % 3) + 1;
+        enum Action computer_choice = (Action) ((rand() % 3) + 1);
 
         print_result_for_the_round(user_choice, computer_choice, &user_score, &computer_score);
 
