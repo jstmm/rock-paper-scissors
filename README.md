@@ -31,7 +31,7 @@ Or use the extension CMake Tools on VSCode
   - [ ] Make the tests executable from CTest
   - [ ] Write tests
 - Refactoring
-  - [ ] Refactor the game into classes
+  - [X] Refactor the game into classes
   - [ ] Divide app into layers (input system, game logic, display)
 - Features
   - [ ] Make the game full screen
